@@ -10,7 +10,7 @@ export default function NavBar() {
 
     return (
         <div className='nav px-5'>
-            <NavLink to='/Prueba_Mamma_Mia' className={ setActiveClass }>
+            <NavLink to='/Prueba_Mamma_Mia/' className={ setActiveClass }>
                 🍕 Pizzeria Mamma Mia!
             </NavLink>
         
