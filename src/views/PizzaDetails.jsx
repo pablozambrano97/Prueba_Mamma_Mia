@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom'
 import context from '../MyContex'
 import { Button, Card } from 'react-bootstrap';
 import { capitalizar } from '../capitalizar';
+import { handleAddPizza } from '../addPizza';
 
 export default function PizzaDetails() {
 
-    const {pizza} = useContext(context);
+    const {pizza, cart, setCart, setSuma} = useContext(context);
     const {id}= useParams();
 
     let selectedPizza = pizza.filter((pizzas) => (pizzas.id===id));
@@ -24,7 +25,7 @@ export default function PizzaDetails() {
                 {selectedPizza[0].ingredients.map((ingredient, i)=>(<span key={i}>🍕 {capitalizar(ingredient)}</span>))}
             </Card.Text>
             <Card.Text><b>Precio: $ {selectedPizza[0].price}</b></Card.Text>
-            <Button style={{width:'30%'}} variant='danger'>Añadir</Button>
+            <Button style={{width:'30%'}} variant='danger' onClick={(e) => (handleAddPizza(e, pizza, cart, setCart, setSuma))}>Añadir</Button>
         </Card.Body>
     </Card>
     </div>

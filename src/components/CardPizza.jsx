@@ -14,7 +14,7 @@ export default function CardPizza() {
 
   function handlePizza(e){
     e.preventDefault();
-    navigate(`/pizza/${e.target.value}`);
+    navigate(`/Prueba_Mamma_Mia/pizza/${e.target.value}`);
   }
 
   return (
