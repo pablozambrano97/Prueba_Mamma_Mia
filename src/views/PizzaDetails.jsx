@@ -25,7 +25,7 @@ export default function PizzaDetails() {
                 {selectedPizza[0].ingredients.map((ingredient, i)=>(<span key={i}>🍕 {capitalizar(ingredient)}</span>))}
             </Card.Text>
             <Card.Text><b>Precio: $ {selectedPizza[0].price}</b></Card.Text>
-            <Button style={{width:'30%'}} variant='danger' onClick={(e) => (handleAddPizza(e, pizza, cart, setCart, setSuma))}>Añadir</Button>
+            <Button style={{width:'30%'}} value={selectedPizza[0].id} variant='danger' onClick={(e) => (handleAddPizza(e, pizza, cart, setCart, setSuma))}>Añadir</Button>
         </Card.Body>
     </Card>
     </div>
