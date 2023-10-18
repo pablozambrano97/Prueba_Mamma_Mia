@@ -1,12 +1,17 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { NavLink } from "react-router-dom";
 import context from '../MyContex';
+import { totalizar } from '../addPizza';
 
 export default function NavBar() {
 
-    const {suma}= useContext(context);
+    const {cart, suma, setSuma}= useContext(context);
 
     const setActiveClass = ({ isActive }) => (isActive ? "active" : "noactive");
+
+    useEffect(()=>{
+        totalizar(cart, setSuma);
+    },[cart])
 
     return (
         <div className='nav px-5'>

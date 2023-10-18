@@ -1,7 +1,12 @@
+export function totalizar(cart, setSuma){
+    const valor=cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, montoXPizza) => (acumulador + montoXPizza),0);
+    setSuma(valor);
+}
 
-export function handleAddPizza(e, allPizzas, cart, setCart, setSuma){
+export function handleAddPizza(e, allPizzas, cart, setCart, setSuma, suma){
 
     const addedPizza = allPizzas.filter((pizza) => (pizza.id === e.target.value));
+
     const indexPizza = cart.findIndex((pizza) => (pizza.id === addedPizza[0].id)); 
 
 
@@ -13,11 +18,9 @@ export function handleAddPizza(e, allPizzas, cart, setCart, setSuma){
         price: addedPizza[0].price,
         cant: '1'
     }]);
-    setSuma(cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, cantidad) => (acumulador + cantidad),0));
     }else{
         cart[indexPizza].cant++;
         setCart([...cart]);
-        setSuma(cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, cantidad) => (acumulador + cantidad),0));
     }
 }
 
@@ -27,7 +30,6 @@ export function incrementar(e, cart, setCart, setSuma, suma){
     if ( cart[index].cant>0){
         cart[index].cant++;
         setCart([...cart]);
-        setSuma(cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, cantidad) => (acumulador + cantidad),0));
     }
 }
 
@@ -37,10 +39,8 @@ export function decrementar(e, cart, setCart, setSuma, suma){
     if(cart[index].cant>1){
         cart[index].cant--;
         setCart([...cart]);
-        setSuma(cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, cantidad) => (acumulador + cantidad),0));
     }else{
         cart.splice(index,1);
         setCart([...cart]);
-        setSuma(cart.map((pizza) => (pizza.cant*pizza.price)).reduce((acumulador, cantidad) => (acumulador + cantidad),0));
     }
 }

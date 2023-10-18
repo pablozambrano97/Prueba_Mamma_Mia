@@ -1,8 +1,9 @@
-import React,{ useContext } from 'react'
+import React,{ useContext, useEffect } from 'react'
 import context from '../MyContex'
 import { capitalizar } from '../capitalizar';
 import { Button, Table } from 'react-bootstrap';
 import { incrementar, decrementar } from '../addPizza';
+import { totalizar } from '../addPizza';
 
 export default function Favoritos() {
     const {cart, setCart, setSuma, suma} = useContext(context);
@@ -19,7 +20,9 @@ export default function Favoritos() {
         </tr>
     ));
 
-
+    useEffect(()=>{
+        totalizar(cart, setSuma);
+    },[cart])
 
     return (
         <div >
